@@ -62,7 +62,7 @@
 					<div>
 						<div class="mb-1 flex justify-between">
 							<p class="text-gray-500">CPU Usage</p>
-							<span class="text-gray-700">{systemState.cpu_usage_percent.toFixed(1)}%</span>
+							<span class="text-gray-700">{Math.round(systemState.cpu_usage_percent * 10) / 10}%</span>
 						</div>
 						<div class="h-2 w-full rounded-full bg-gray-200">
 							<div
@@ -78,17 +78,17 @@
 					<div>
 						<p class="text-gray-500">Total Memory</p>
 						<p class="font-semibold">
-							{(systemState.mem_total / 1024 / 1024 / 1024).toFixed(2)} GB
+							{Math.round((systemState.mem_total / 1024 / 1024 / 1024) * 10) / 10} GB
 						</p>
 					</div>
 					<div>
 						<p class="text-gray-500">Used Memory</p>
-						<p class="font-semibold">{(systemState.mem_used / 1024 / 1024 / 1024).toFixed(2)} GB</p>
+						<p class="font-semibold">{Math.round((systemState.mem_used / 1024 / 1024 / 1024) * 10) / 10} GB</p>
 					</div>
 					<div>
 						<div class="mb-1 flex justify-between">
 							<p class="text-gray-500">Memory Usage</p>
-							<span class="text-gray-700">{systemState.mem_used_percent}%</span>
+							<span class="text-gray-700">{Math.round(systemState.mem_used_percent * 10) / 10}%</span>
 						</div>
 						<div class="h-2 w-full rounded-full bg-gray-200">
 							<div

@@ -98,6 +98,18 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Go Runtime Info -->
+				<div class="space-y-4">
+					<div>
+						<p class="text-gray-500">Go Version</p>
+						<p class="font-semibold">{systemState.go_version}</p>
+					</div>
+					<div>
+						<p class="text-gray-500">Active Goroutines</p>
+						<p class="font-semibold">{systemState.num_goroutine}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 

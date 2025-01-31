@@ -5,8 +5,8 @@ export interface Config {
     auth_key?: string;
     ephemeral?: boolean;
     dashboard?: number;
-    proxy: Record<string, Proxy>;
-    file: Record<string, File>;
+    proxy?: Record<string, Proxy>;
+    file?: Record<string, File>;
 }
 
 export interface Proxy {

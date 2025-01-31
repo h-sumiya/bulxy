@@ -114,113 +114,117 @@
 		</div>
 
 		<!-- Proxies Section -->
-		<div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each Object.entries(config.proxy) as [key, proxy]}
-				<div class="rounded-lg bg-white p-6 shadow-lg">
-					<div class="mb-4 flex items-center justify-between">
-						<h2 class="text-xl font-semibold text-gray-800">
-							{proxy.display_name || key}
-						</h2>
-						<span class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800">
-							{proxy.mode}
-						</span>
-					</div>
-					{#if proxy.description}
-						<p class="mb-4 text-sm text-gray-600">{proxy.description}</p>
-					{/if}
-					<div class="flex justify-between text-sm">
-						<div>
-							<p class="text-gray-500">From Port</p>
-							<div class="flex items-center gap-2">
-								<a
-									href="http://{window.location.hostname}:{proxy.from}"
-									target="_blank"
-									rel="noopener noreferrer"
-									class="font-mono text-blue-600 hover:text-blue-800">{proxy.from}</a
-								>
-								<button
-									class="rounded p-1 hover:bg-gray-100"
-									onclick={() => copyToClipboard(proxy.from.toString())}
-									title="Copy port number"
-									aria-label="Copy port number"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
+		{#if config.proxy}
+			<div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{#each Object.entries(config.proxy) as [key, proxy]}
+					<div class="rounded-lg bg-white p-6 shadow-lg">
+						<div class="mb-4 flex items-center justify-between">
+							<h2 class="text-xl font-semibold text-gray-800">
+								{proxy.display_name || key}
+							</h2>
+							<span class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800">
+								{proxy.mode}
+							</span>
+						</div>
+						{#if proxy.description}
+							<p class="mb-4 text-sm text-gray-600">{proxy.description}</p>
+						{/if}
+						<div class="flex justify-between text-sm">
+							<div>
+								<p class="text-gray-500">From Port</p>
+								<div class="flex items-center gap-2">
+									<a
+										href="http://{window.location.hostname}:{proxy.from}"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="font-mono text-blue-600 hover:text-blue-800">{proxy.from}</a
 									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-										/>
-									</svg>
-								</button>
+									<button
+										class="rounded p-1 hover:bg-gray-100"
+										onclick={() => copyToClipboard(proxy.from.toString())}
+										title="Copy port number"
+										aria-label="Copy port number"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+											/>
+										</svg>
+									</button>
+								</div>
+							</div>
+							<div class="text-center">
+								<p class="text-gray-500">↔</p>
+							</div>
+							<div>
+								<p class="text-gray-500">To Port</p>
+								<p class="font-mono">{proxy.to}</p>
 							</div>
 						</div>
-						<div class="text-center">
-							<p class="text-gray-500">↔</p>
-						</div>
-						<div>
-							<p class="text-gray-500">To Port</p>
-							<p class="font-mono">{proxy.to}</p>
-						</div>
 					</div>
-				</div>
-			{/each}
-		</div>
+				{/each}
+			</div>
+		{/if}
 
 		<!-- File Shares Section -->
-		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{#each Object.entries(config.file) as [key, file]}
-				<div class="rounded-lg bg-white p-6 shadow-lg">
-					<h2 class="mb-4 text-xl font-semibold text-gray-800">
-						{file.display_name || key}
-					</h2>
-					<div class="space-y-2">
-						<div>
-							<p class="text-sm text-gray-500">Port</p>
-							<div class="flex items-center gap-2">
-								<a
-									href="http://{window.location.hostname}:{file.from}"
-									target="_blank"
-									rel="noopener noreferrer"
-									class="font-mono text-blue-600 hover:text-blue-800">{file.from}</a
-								>
-								<button
-									class="rounded p-1 hover:bg-gray-100"
-									onclick={() => copyToClipboard(file.from.toString())}
-									title="Copy port number"
-									aria-label="Copy port number"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
+		{#if config.file}
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{#each Object.entries(config.file) as [key, file]}
+					<div class="rounded-lg bg-white p-6 shadow-lg">
+						<h2 class="mb-4 text-xl font-semibold text-gray-800">
+							{file.display_name || key}
+						</h2>
+						<div class="space-y-2">
+							<div>
+								<p class="text-sm text-gray-500">Port</p>
+								<div class="flex items-center gap-2">
+									<a
+										href="http://{window.location.hostname}:{file.from}"
+										target="_blank"
+										rel="noopener noreferrer"
+										class="font-mono text-blue-600 hover:text-blue-800">{file.from}</a
 									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
-										/>
-									</svg>
-								</button>
+									<button
+										class="rounded p-1 hover:bg-gray-100"
+										onclick={() => copyToClipboard(file.from.toString())}
+										title="Copy port number"
+										aria-label="Copy port number"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												stroke-width="2"
+												d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+											/>
+										</svg>
+									</button>
+								</div>
+							</div>
+							<div>
+								<p class="text-sm text-gray-500">Directory</p>
+								<p class="truncate font-mono text-sm">{file.dir}</p>
 							</div>
 						</div>
-						<div>
-							<p class="text-sm text-gray-500">Directory</p>
-							<p class="truncate font-mono text-sm">{file.dir}</p>
-						</div>
 					</div>
-				</div>
-			{/each}
-		</div>
+				{/each}
+			</div>
+		{/if}
 	</div>
 	<div
 		class="copied-message fixed bottom-4 right-4 hidden rounded bg-gray-800 px-4 py-2 text-white shadow-lg"

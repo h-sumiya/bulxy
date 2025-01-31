@@ -1,5 +1,6 @@
 # Bulxy
 
+![2025-01-31 22 41 04 100 113 141 16 bcdce346feb6](https://github.com/user-attachments/assets/024cb633-1200-41dc-ad5d-f9ca8fa5b533)
 Bulxy is a flexible proxy and file server manager that allows you to run multiple services on a single host.
 
 ## Features

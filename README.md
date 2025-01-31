@@ -25,7 +25,14 @@ display_name = "Application 1"
 description = "Main application"
 from = 8001
 to = 3000
-mode = "http"
+mode = "tcp"
+
+[proxy.app2]
+display_name = "Application 2"
+description = "Secondary application"
+from = 8002
+to = 3001
+mode = "udp"
 
 [file.static]
 display_name = "Static Files"
